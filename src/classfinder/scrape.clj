@@ -12,9 +12,18 @@
             :body
             html/html-snippet)))
 
+(defn option->map [{{id :value} :attrs
+                    [name] :content}]
+  {:id id
+   :name name})
+
 (defn get-list [select-name]
-  (html/select (fetch-url base-url {:method :get})
-               [[:select (html/attr= :name select-name)] :option]))
+  (map option->map
+       (-> base-url
+           (fetch-url {:method :get})
+           (html/select [[:select
+                          (html/attr= :name select-name)]
+                         :option]))))
 
 (defn get-terms []
   (get-list "term"))
