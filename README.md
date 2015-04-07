@@ -1,6 +1,7 @@
-# classfinder
+# Classfinder API
 
-FIXME
+A RESTful API for accessing WWU class registration
+information. Scraped from the Classfinder website.
 
 ## Prerequisites
 
@@ -16,4 +17,4 @@ To start a web server for the application, run:
 
 ## License
 
-Copyright © 2015 FIXME
+Copyright © 2015 Geoff Shannon
