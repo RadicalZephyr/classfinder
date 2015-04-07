@@ -1,6 +1,6 @@
 (defproject classfinder "0.1.0-SNAPSHOT"
-  :description "An API for WWU registration information."
-  :url "http://example.com/FIXME"
+  :description "An API for WWU class registration information."
+  :url "https://github.com/RadicalZephyr/classfinder"
   :min-lein-version "2.0.0"
   :dependencies [[org.clojure/clojure "1.6.0"]
                  [ring/ring-core "1.3.2"]
