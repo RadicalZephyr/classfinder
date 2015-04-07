@@ -36,3 +36,18 @@
 
 (defn get-instructors []
   (drop 1 (get-list "sel_inst")))
+
+(def default-params
+  {:form-params
+   {:sel_gur  "All"
+    :sel_subj "All"
+    :sel_inst "ANY"
+    :sel_crse ""
+    :begin_hh  0
+    :begin_mi "A"
+    :end_hh    0
+    :end_mi   "A"
+    :sel_cdts "%"
+    :sel_day  "dummy"
+    :sel_open "dummy"
+    :sel_crn  ""}})
