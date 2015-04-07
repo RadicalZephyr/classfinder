@@ -37,6 +37,8 @@
 (defn get-instructors []
   (drop 1 (get-list "sel_inst")))
 
+(def form-url "https://admin.wwu.edu/pls/wwis/wwsktime.ListClass")
+
 (def default-params
   {:form-params
    {:sel_gur  "All"
@@ -51,3 +53,13 @@
     :sel_day  "dummy"
     :sel_open "dummy"
     :sel_crn  ""}})
+
+(defn find-classes [{{:keys [sel_subj sel_inst sel_gur]}
+                     :form-params
+                     :as opts}]
+  (when (or sel_subj sel_inst sel_gur)
+    (let [opts (merge-with merge default-params opts)]
+      (-> form-url
+          (client/post opts)
+          :body
+          html/html-snippet))))
