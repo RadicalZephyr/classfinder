@@ -20,10 +20,10 @@
   (get-list "term"))
 
 (defn get-subjects []
-  (get-list "sel_subj"))
+  (drop 1 (get-list "sel_subj")))
 
 (defn get-course-attributes []
-  (get-list "sel_gur"))
+  (drop 1 (get-list "sel_gur")))
 
 (defn get-instructors []
-  (get-list "sel_inst"))
+  (drop 1 (get-list "sel_inst")))
