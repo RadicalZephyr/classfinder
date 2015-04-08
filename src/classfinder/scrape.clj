@@ -41,16 +41,18 @@
 
 (def default-params
   {:form-params
-   {:sel_gur  "All"
-    :sel_subj "All"
+   {:sel_day  "dummy"
+    :sel_open "dummy"
+    :sel_crn  ""
+    :sel_gur  ["dummy" "dummy"]
+    :sel_subj ["dummy" "dummy"]
     :sel_inst "ANY"
     :sel_crse ""
     :begin_hh  0
     :begin_mi "A"
     :end_hh    0
     :end_mi   "A"
-    :sel_cdts "%"
-    :sel_crn  ""}})
+    :sel_cdts "%"}})
 
 (def quarter->code {:winter 10
                     :spring 20
