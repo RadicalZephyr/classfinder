@@ -67,6 +67,10 @@
 (defn term-code [year quarter]
   (str year (quarter->code quarter)))
 
+(defn valid-term-code? [term-code]
+  (and (string? term-code)
+   (re-matches #"[12][0-9]{3}[1-4]0" term-code)))
+
 (defn merge-with-defaults [opts]
   (let [opts-with-defaults (merge-with merge
                                        multi-value-defaults
@@ -78,7 +82,8 @@
                      :form-params
                      :as opts}]
   (if (and (or sel_subj sel_inst sel_gur)
-           term)
+           term
+           (valid-term-code? term))
     (let [opts (merge-with-defaults opts)
           response-resource
           (-> form-url
