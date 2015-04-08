@@ -51,8 +51,6 @@
     :end_hh    0
     :end_mi   "A"
     :sel_cdts "%"
-    :sel_day  "dummy"
-    :sel_open "dummy"
     :sel_crn  ""}})
 
 (def quarter->code {:winter 10
