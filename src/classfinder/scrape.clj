@@ -55,10 +55,11 @@
     :sel_open "dummy"
     :sel_crn  ""}})
 
-(defn find-classes [{{:keys [sel_subj sel_inst sel_gur]}
+(defn find-classes [{{:keys [term sel_subj sel_inst sel_gur]}
                      :form-params
                      :as opts}]
-  (if (or sel_subj sel_inst sel_gur)
+  (if (and (or sel_subj sel_inst sel_gur)
+           term)
     (let [opts (merge-with merge default-params opts)
           response-resource
           (-> form-url
