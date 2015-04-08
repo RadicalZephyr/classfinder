@@ -58,9 +58,16 @@
 (defn find-classes [{{:keys [sel_subj sel_inst sel_gur]}
                      :form-params
                      :as opts}]
-  (when (or sel_subj sel_inst sel_gur)
-    (let [opts (merge-with merge default-params opts)]
-      (-> form-url
-          (client/post opts)
-          :body
-          html/html-snippet))))
+  (if (or sel_subj sel_inst sel_gur)
+    (let [opts (merge-with merge default-params opts)
+          response-resource
+          (-> form-url
+              (client/post opts)
+              :body
+              html/html-snippet)]
+      (if-not (html/select response-resource
+                             [:h3 :b #(html/content %)])
+        (html/select response-resource
+                     [:tr])
+        (println "Got a \"No classes found\" message.")))
+    (println "Didn't have the right stuff!")))
