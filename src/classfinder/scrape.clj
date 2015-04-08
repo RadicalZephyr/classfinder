@@ -69,5 +69,7 @@
                              [:h3 :b #(html/content %)])
         (html/select response-resource
                      [:tr])
-        (println "Got a \"No classes found\" message.")))
+        (do
+          (println "Got a \"No classes found\" message.")
+          response-resource)))
     (println "Didn't have the right stuff!")))
