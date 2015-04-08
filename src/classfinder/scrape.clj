@@ -90,11 +90,5 @@
               (client/post opts)
               :body
               html/html-snippet)]
-      (if-not (html/select response-resource
-                             [:h3 :b #(html/content %)])
-        (html/select response-resource
-                     [:tr])
-        (do
-          (println "Got a \"No classes found\" message.")
-          response-resource)))
+      response-resource)
     (println "Didn't have the right stuff!")))
