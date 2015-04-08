@@ -54,6 +54,11 @@
     :end_mi   "A"
     :sel_cdts "%"}})
 
+(def multi-value-defaults
+  {:form-params
+   {:sel_gur  "All"
+    :sel_subj "All"}})
+
 (def quarter->code {:winter 10
                     :spring 20
                     :summer 30
@@ -62,12 +67,19 @@
 (defn term-code [year quarter]
   (str year (quarter->code quarter)))
 
+(defn merge-with-defaults [opts]
+  (let [opts-with-defaults (merge-with merge
+                                       multi-value-defaults
+                                       opts)]
+    (merge-with #(merge-with conj %1 %2)
+                default-params opts-with-defaults)))
+
 (defn find-classes [{{:keys [term sel_subj sel_inst sel_gur]}
                      :form-params
                      :as opts}]
   (if (and (or sel_subj sel_inst sel_gur)
            term)
-    (let [opts (merge-with merge default-params opts)
+    (let [opts (merge-with-defaults opts)
           response-resource
           (-> form-url
               (client/post opts)
