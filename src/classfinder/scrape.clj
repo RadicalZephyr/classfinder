@@ -55,6 +55,14 @@
     :sel_open "dummy"
     :sel_crn  ""}})
 
+(def quarter->code {:winter 10
+                    :spring 20
+                    :summer 30
+                    :fall   40})
+
+(defn term-code [year quarter]
+  (str year (quarter->code quarter)))
+
 (defn find-classes [{{:keys [term sel_subj sel_inst sel_gur]}
                      :form-params
                      :as opts}]
