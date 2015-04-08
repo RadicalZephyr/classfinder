@@ -40,7 +40,8 @@
 (def form-url "https://admin.wwu.edu/pls/wwis/wwsktime.ListClass")
 
 (def default-params
-  {:form-params
+  {:content-type "text/html; charset=UTF-8"
+   :form-params
    {:sel_gur  "All"
     :sel_subj "All"
     :sel_inst "ANY"
